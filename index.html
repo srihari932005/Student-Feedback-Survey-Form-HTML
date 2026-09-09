@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback Survey</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #222;
+    }
+    .container {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+    .form-card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    }
+    h1 { margin-top: 0; text-align: center; }
+    .intro { text-align: center; color: #666; margin-bottom: 28px; }
+    fieldset {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    legend { font-weight: bold; padding: 0 8px; }
+    label { display: block; margin: 10px 0 6px; font-weight: 600; }
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #bbb;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .option { font-weight: normal; display: block; margin: 9px 0; }
+    .option input { margin-right: 8px; }
+    .rating {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .rating label { font-weight: normal; margin: 0; }
+    button {
+      width: 100%;
+      padding: 13px;
+      border: 0;
+      border-radius: 8px;
+      background: #1616a8;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #101080; }
+    .success {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      background: #e8f7e8;
+      border-radius: 7px;
+      color: #246024;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-card">
+      <h1>Student Feedback Survey</h1>
+      <p class="intro">Please share your feedback to help us improve the learning experience.</p>
+
+      <form id="surveyForm">
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </fieldset>
+
+        <fieldset>
+          <legend>Course Feedback</legend>
+
+          <label>How satisfied are you with the course?</label>
+          <label class="option"><input type="radio" name="satisfaction" value="Very Satisfied" required> Very Satisfied</label>
+          <label class="option"><input type="radio" name="satisfaction" value="Satisfied"> Satisfied</label>
+          <label class="option"><input type="radio" name="satisfaction" value="Neutral"> Neutral</label>
+          <label class="option"><input type="radio" name="satisfaction" value="Dissatisfied"> Dissatisfied</label>
+
+          <label>Which topics did you find useful?</label>
+          <label class="option"><input type="checkbox" name="topics" value="HTML"> HTML</label>
+          <label class="option"><input type="checkbox" name="topics" value="Forms"> HTML Forms</label>
+          <label class="option"><input type="checkbox" name="topics" value="Attributes"> HTML Attributes</label>
+          <label class="option"><input type="checkbox" name="topics" value="Lists"> HTML Lists</label>
+
+          <label for="difficulty">How would you rate the course difficulty?</label>
+          <select id="difficulty" name="difficulty" required>
+            <option value="">Select an option</option>
+            <option>Easy</option>
+            <option>Moderate</option>
+            <option>Difficult</option>
+          </select>
+
+          <label>Overall rating (1 to 5)</label>
+          <div class="rating">
+            <label><input type="radio" name="rating" value="1" required> 1</label>
+            <label><input type="radio" name="rating" value="2"> 2</label>
+            <label><input type="radio" name="rating" value="3"> 3</label>
+            <label><input type="radio" name="rating" value="4"> 4</label>
+            <label><input type="radio" name="rating" value="5"> 5</label>
+          </div>
+
+          <label for="feedback">Additional Feedback</label>
+          <textarea id="feedback" name="feedback" placeholder="Enter your feedback"></textarea>
+        </fieldset>
+
+        <button type="submit">Submit Survey</button>
+        <div class="success" id="successMessage">Thank you! Your feedback has been submitted.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("surveyForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("successMessage").style.display = "block";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
